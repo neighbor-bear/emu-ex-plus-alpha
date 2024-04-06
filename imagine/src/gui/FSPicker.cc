@@ -203,7 +203,7 @@ void FSPicker::onAddedToController(ViewController *, const Input::Event &e)
 
 void FSPicker::setEmptyPath(std::string_view message)
 {
-	log.info("setting empty path");
+	log.info("设置空路径");
 	dirListThread.stop();
 	dirListEvent.cancel();
 	root = {};
@@ -217,7 +217,7 @@ void FSPicker::setEmptyPath(std::string_view message)
 	}
 	else
 	{
-		fileTableView().resetName("Select File Location");
+		fileTableView().resetName("选择文件位置");
 	}
 	if(viewRect().x)
 		place();
@@ -225,7 +225,7 @@ void FSPicker::setEmptyPath(std::string_view message)
 
 void FSPicker::setEmptyPath()
 {
-	setEmptyPath("No folder is set");
+	setEmptyPath("未设置文件夹");
 }
 
 void FSPicker::setPath(CStringView path, FS::RootPathInfo rootInfo, const Input::Event &e)
@@ -338,7 +338,7 @@ void FSPicker::pushFileLocationsView(const Input::Event &e)
 	public:
 		FileLocationsTextTableView(ViewAttachParams attach,
 			std::vector<FS::PathLocation> locations, size_t customItems):
-				TextTableView{"File Locations", attach, locations.size() + customItems},
+				TextTableView{"文件位置", attach, locations.size() + customItems},
 				locations_{std::move(locations)} {}
 		const std::vector<FS::PathLocation> &locations() const { return locations_; }
 
@@ -348,7 +348,7 @@ void FSPicker::pushFileLocationsView(const Input::Event &e)
 
 	int customItems = 1 + Config::envIsLinux + appContext().hasSystemPathPicker() + appContext().hasSystemDocumentPicker();
 	auto view = makeView<FileLocationsTextTableView>(appContext().rootFileLocations(), customItems);
-	static constexpr std::string_view failedSystemPickerMsg = "This device doesn't have a document browser, please select a media folder instead";
+	static constexpr std::string_view failedSystemPickerMsg = "这个设备没有文档浏览器，请选择一个媒体文件夹代替";
 	if(appContext().hasSystemPathPicker())
 	{
 		view->appendItem("浏览文件夹",
