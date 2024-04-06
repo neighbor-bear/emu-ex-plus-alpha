@@ -48,7 +48,7 @@ namespace EmuEx
 {
 
 constexpr SystemLogger log{"Saturnemu"};
-const char *EmuSystem::creditsViewStr = CREDITS_INFO_STRING "(c) 2011-2024\nRobert Broglia\nwww.explusalpha.com\n\nPortions (c) the\nMednafen Team\nmednafen.github.io";
+const char *EmuSystem::creditsViewStr = CREDITS_INFO_STRING "(c) 2011-2024\nRobert Broglia\nwww.explusalpha.com\n\nPortions (c) the\nMednafen Team\nmednafen.github.io\n汉化 BY 邻家小熊\n汉化仅供娱乐\n请勿用于任何商业用途";
 bool EmuSystem::handlesArchiveFiles = true;
 bool EmuSystem::hasResetModes = true;
 bool EmuSystem::hasRectangularPixels = true;

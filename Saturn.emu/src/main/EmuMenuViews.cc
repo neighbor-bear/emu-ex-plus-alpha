@@ -587,7 +587,7 @@ class CustomVideoOptionView : public VideoOptionView, public MainAppHelper<Custo
 
 	BoolMenuItem showHOverscan
 	{
-		"Default Show Horizontal Overscan", attachParams(),
+		"默认显示水平超扫描", attachParams(),
 		system().defaultShowHOverscan,
 		[this](BoolMenuItem &item)
 		{
@@ -603,7 +603,7 @@ class CustomVideoOptionView : public VideoOptionView, public MainAppHelper<Custo
 
 	MultiChoiceMenuItem visibleVideoLines
 	{
-		"Default NTSC Visible Lines", attachParams(),
+		"默认NTSC可见行数", attachParams(),
 		std::bit_cast<MenuId>(system().defaultNtscLines),
 		visibleVideoLinesItem,
 		{
@@ -616,7 +616,7 @@ class CustomVideoOptionView : public VideoOptionView, public MainAppHelper<Custo
 
 	BoolMenuItem correctLineAspect
 	{
-		"Correct Line Aspect Ratio", attachParams(),
+		"正确的宽高比", attachParams(),
 		system().correctLineAspect,
 		[this](BoolMenuItem &item)
 		{
