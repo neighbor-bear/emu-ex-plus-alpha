@@ -29,7 +29,7 @@ public:
 		{
 			TextMenuItem
 			{
-				"Soft Reset", attach,
+				"软件重置", attach,
 				[this, &app]()
 				{
 					app.system().reset(app, EmuSystem::ResetMode::SOFT);
