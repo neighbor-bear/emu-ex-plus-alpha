@@ -259,25 +259,25 @@ std::string MDFN_MakeFName(MakeFName_Type type, int id1, const char *cd1)
 			if(biosName == "kof95")
 			{
 				if(sys.kof95ROMPath.empty())
-					throw MDFN_Error(0, _("Please set KoF '95 ROM in Options➔File Paths"));
+					throw MDFN_Error(0, _("请在选项➔文件路径中设置KoF '95 ROM"));
 				return std::string{sys.kof95ROMPath};
 			}
 			else if(biosName == "ultraman")
 			{
 				if(sys.ultramanROMPath.empty())
-					throw MDFN_Error(0, _("Please set Ultraman ROM in Options➔File Paths"));
+					throw MDFN_Error(0, _("请在选项➔文件路径中设置Ultraman ROM"));
 				return std::string{sys.ultramanROMPath};
 			}
 			else if(biosName == "na")
 			{
 				if(sys.naBiosPath.empty())
-					throw MDFN_Error(0, _("Please set NA/EU BIOS in Options➔File Paths"));
+					throw MDFN_Error(0, _("请在选项➔文件路径中设置NA/EU BIOS"));
 				return std::string{sys.naBiosPath};
 			}
 			else
 			{
 				if(sys.jpBiosPath.empty())
-					throw MDFN_Error(0, _("Please set JP BIOS in Options➔File Paths"));
+					throw MDFN_Error(0, _("请在选项➔文件路径中设置JP BIOS"));
 				return std::string{sys.jpBiosPath};
 			}
 		}
