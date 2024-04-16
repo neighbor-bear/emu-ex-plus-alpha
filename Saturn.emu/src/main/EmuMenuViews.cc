@@ -155,7 +155,7 @@ constexpr auto cartTypeToString(int t)
 {
 	switch(t)
 	{
-		case CART_NONE: return "None";
+		case CART_NONE: return "无";
 		case CART_BACKUP_MEM: return "512K Backup RAM";
 		case CART_EXTRAM_1M: return "1M RAM";
 		case CART_EXTRAM_4M: return "4M RAM";
@@ -198,7 +198,7 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	MultiChoiceMenuItem cartType
 	{
-		"Cart Type", attachParams(),
+		"卡带类型", attachParams(),
 		MenuId{system().cartType},
 		cartTypeItems,
 		{
@@ -222,7 +222,7 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	TextMenuItem regionItems[9]
 	{
-		{"Auto",                              attachParams(), {.id = 0}},
+		{"自动",                              attachParams(), {.id = 0}},
 		{regionToString(SMPC_AREA_JP),        attachParams(), {.id = SMPC_AREA_JP}},
 		{regionToString(SMPC_AREA_NA),        attachParams(), {.id = SMPC_AREA_NA}},
 		{regionToString(SMPC_AREA_EU_PAL),    attachParams(), {.id = SMPC_AREA_EU_PAL}},
@@ -235,7 +235,7 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	MultiChoiceMenuItem region
 	{
-		"Region", attachParams(),
+		"区域", attachParams(),
 		MenuId{system().region},
 		regionItems,
 		{
@@ -261,7 +261,7 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	MultiChoiceMenuItem disc
 	{
-		"Disc", attachParams(),
+		"光盘", attachParams(),
 		MenuId{system().currentDiscId()},
 		discItems
 	};
@@ -274,11 +274,11 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 		};
 	}
 
-	TextHeadingMenuItem videoHeading{"Video", attachParams()};
+	TextHeadingMenuItem videoHeading{"视频", attachParams()};
 
 	BoolMenuItem showHOverscan
 	{
-		"Show Horizontal Overscan", attachParams(),
+		"显示水平过扫描", attachParams(),
 		system().showHOverscan,
 		[this](BoolMenuItem &item)
 		{
@@ -302,7 +302,7 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	MultiChoiceMenuItem visibleVideoLines
 	{
-		"Visible Lines", attachParams(),
+		"轮廓线", attachParams(),
 		std::bit_cast<MenuId>(system().videoLines),
 		[&]() -> std::span<TextMenuItem>
 		{
@@ -328,7 +328,7 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	MultiChoiceMenuItem deinterlaceMode
 	{
-		"Deinterlace Mode", attachParams(),
+		"去隔行扫描模式", attachParams(),
 		MenuId{system().deinterlaceMode},
 		deinterlaceModeItems,
 		{
@@ -342,16 +342,16 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	TextMenuItem contentRotationItems[5]
 	{
-		{"Auto",        attachParams(), {.id = Rotation::ANY}},
-		{"Standard",    attachParams(), {.id = Rotation::UP}},
-		{"90° Right",   attachParams(), {.id = Rotation::RIGHT}},
-		{"Upside Down", attachParams(), {.id = Rotation::DOWN}},
-		{"90° Left",    attachParams(), {.id = Rotation::LEFT}},
+		{"自动",        attachParams(), {.id = Rotation::ANY}},
+		{"标准",    attachParams(), {.id = Rotation::UP}},
+		{"右转90°",   attachParams(), {.id = Rotation::RIGHT}},
+		{"上下颠倒", attachParams(), {.id = Rotation::DOWN}},
+		{"左转90°",    attachParams(), {.id = Rotation::LEFT}},
 	};
 
 	MultiChoiceMenuItem contentRotation
 	{
-		"Content Rotation", attachParams(),
+		"内容旋转", attachParams(),
 		MenuId{system().sysContentRotation},
 		contentRotationItems,
 		{
@@ -366,14 +366,14 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	TextMenuItem widescreenModeItems[3]
 	{
-		{"Auto",  attachParams(), {.id = WidescreenMode::Auto}},
-		{"On",    attachParams(), {.id = WidescreenMode::On}},
-		{"Off",   attachParams(), {.id = WidescreenMode::Off}},
+		{"自动",  attachParams(), {.id = WidescreenMode::Auto}},
+		{"开",    attachParams(), {.id = WidescreenMode::On}},
+		{"关",   attachParams(), {.id = WidescreenMode::Off}},
 	};
 
 	MultiChoiceMenuItem widescreenMode
 	{
-		"Anamorphic Widescreen Content", attachParams(),
+		"宽屏幕显示游戏", attachParams(),
 		MenuId{system().widescreenMode},
 		widescreenModeItems,
 		{
@@ -386,11 +386,11 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 		}
 	};
 
-	TextHeadingMenuItem inputHeading{"Input", attachParams()};
+	TextHeadingMenuItem inputHeading{"输入", attachParams()};
 
 	BoolMenuItem multitapItem(int idx)
 	{
-		return { std::format("Port {} Multitap", idx + 1), attachParams(),
+		return { std::format("端口 {} 配置", idx + 1), attachParams(),
 			system().inputConfig.multitaps[idx],
 			[this, idx](BoolMenuItem &item)
 			{
@@ -408,14 +408,14 @@ class ConsoleOptionView : public TableView, public MainAppHelper<ConsoleOptionVi
 
 	TextMenuItem inputDeviceItems[3]
 	{
-		{"Gamepad", attachParams(), setInputPortsDel(), {.id = InputDeviceType::gamepad}},
+		{"游戏手柄", attachParams(), setInputPortsDel(), {.id = InputDeviceType::gamepad}},
 		{"Gun",     attachParams(), setInputPortsDel(), {.id = InputDeviceType::gun}},
-		{"None",    attachParams(), setInputPortsDel(), {.id = InputDeviceType::none}},
+		{"无",    attachParams(), setInputPortsDel(), {.id = InputDeviceType::none}},
 	};
 
 	MultiChoiceMenuItem inputDeviceItem(int idx)
 	{
-		return {std::format("Port {}", idx + 1), attachParams(),
+		return {std::format("端口 {}", idx + 1), attachParams(),
 			MenuId{system().inputConfig.devs[idx]},
 			inputDeviceItems,
 			{
@@ -475,7 +475,7 @@ public:
 	ConsoleOptionView(ViewAttachParams attach):
 		TableView
 		{
-			"Console Options",
+			"控制台选项",
 			attach,
 			menuItems
 		},
@@ -484,7 +484,7 @@ public:
 			[&]()
 			{
 				auto discItems = DynArray<TextMenuItem>{system().CDInterfaces.size() + 1};
-				discItems[0] = {"Eject", attachParams(), setDiscDel(), {.id = -1}};
+				discItems[0] = {"弹出", attachParams(), setDiscDel(), {.id = -1}};
 				const char *numStrings[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" , "15", "16"};
 				for(auto i : iotaCount(system().CDInterfaces.size()))
 				{
@@ -519,7 +519,7 @@ class CustomSystemActionsView : public SystemActionsView
 private:
 	TextMenuItem options
 	{
-		"Console Options", attachParams(),
+		"控制台选项", attachParams(),
 		[this](Input::Event e) { pushAndShow(makeView<ConsoleOptionView>(), e); }
 	};
 
