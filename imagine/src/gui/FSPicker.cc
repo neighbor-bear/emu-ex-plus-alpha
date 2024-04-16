@@ -217,7 +217,7 @@ void FSPicker::setEmptyPath(std::string_view message)
 	}
 	else
 	{
-		fileTableView().resetName("Select File Location");
+		fileTableView().resetName("选择文件位置");
 	}
 	if(viewRect().x)
 		place();
@@ -225,7 +225,7 @@ void FSPicker::setEmptyPath(std::string_view message)
 
 void FSPicker::setEmptyPath()
 {
-	setEmptyPath("No folder is set");
+	setEmptyPath("未设置文件夹");
 }
 
 void FSPicker::setPath(CStringView path, FS::RootPathInfo rootInfo, const Input::Event &e)
@@ -351,7 +351,7 @@ void FSPicker::pushFileLocationsView(const Input::Event &e)
 	static constexpr std::string_view failedSystemPickerMsg = "This device doesn't have a document browser, please select a media folder instead";
 	if(appContext().hasSystemPathPicker())
 	{
-		view->appendItem("Browse For Folder",
+		view->appendItem("浏览文件夹",
 			[this](View &view, const Input::Event &e)
 			{
 				if(!appContext().showSystemPathPicker())
@@ -363,7 +363,7 @@ void FSPicker::pushFileLocationsView(const Input::Event &e)
 	}
 	if(mode_ != Mode::DIR && appContext().hasSystemDocumentPicker())
 	{
-		view->appendItem("Browse For File",
+		view->appendItem("浏览文件",
 			[this](View &view, const Input::Event &e)
 			{
 				if(!appContext().showSystemDocumentPicker())
@@ -390,18 +390,18 @@ void FSPicker::pushFileLocationsView(const Input::Event &e)
 	}
 	if(Config::envIsLinux)
 	{
-		view->appendItem("Root Filesystem",
+		view->appendItem("根文件系统",
 			[this](View &view, const Input::Event &e)
 			{
 				changeDirByInput("/", {}, e, DepthMode::reset);
 				view.dismiss();
 			});
 	}
-	view->appendItem("Custom Path",
+	view->appendItem("自定义路径",
 		[this](const Input::Event &e)
 		{
 			auto textInputView = makeView<CollectTextInputView>(
-				"Input a directory path", root.path, Gfx::TextureSpan{},
+				"输入一个目录路径", root.path, Gfx::TextureSpan{},
 				[this](CollectTextInputView &view, const char *str)
 				{
 					if(!str || !strlen(str))
