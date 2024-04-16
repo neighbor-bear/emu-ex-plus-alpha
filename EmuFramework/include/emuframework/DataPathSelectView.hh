@@ -76,7 +76,7 @@ public:
 		},
 		selectFile
 		{
-			mode == DataPathSelectMode::File ? "Select File" : "Select Archive File", attach,
+			mode == DataPathSelectMode::File ? "选择文件" : "选择压缩文件", attach,
 			[=](View &view, const Input::Event &e)
 			{
 				auto &thisView = asThis(view);
@@ -88,7 +88,7 @@ public:
 					{
 						if(mode == DataPathSelectMode::Folder && !EmuApp::hasArchiveExtension(displayName))
 						{
-							picker.applicationAs<EmuApp>().postErrorMessage("File doesn't have a valid extension");
+							picker.applicationAs<EmuApp>().postErrorMessage("文件没有有效的扩展名");
 							return;
 						}
 						if(!onFileChange(path, FS::file_type::regular))
@@ -102,7 +102,7 @@ public:
 		},
 		unset
 		{
-			"Unset", attach,
+			"重新设置", attach,
 			[=](View &view)
 			{
 				onFileChange("", FS::file_type::none);
