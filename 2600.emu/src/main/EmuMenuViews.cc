@@ -313,7 +313,7 @@ public:
 	ConsoleOptionView(ViewAttachParams attach):
 		TableView
 		{
-			"Console Options",
+			"控制台选项",
 			attach,
 			menuItem
 		}
@@ -397,7 +397,7 @@ private:
 
 	TextMenuItem options
 	{
-		"Console Options", attachParams(),
+		"控制台选项", attachParams(),
 		[this](const Input::Event &e)
 		{
 			if(system().hasContent())
